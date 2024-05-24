@@ -6,9 +6,9 @@ const indexRouter = require('./routes/index');
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use("/api", indexRouter);
-app.use(cors());
 
 const mongoURI = `mongodb://localhost:27017/todo-demo`;
 
