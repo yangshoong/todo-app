@@ -23,4 +23,3 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
 app.listen(process.env.PORT || 5001, () => {
   console.log("server on 5001");
 });
-``
