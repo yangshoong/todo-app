@@ -1,7 +1,0 @@
-# 자동으로 LF를 CRLF로 변환하지 않도록 설정
-* text=auto eol=lf
-
-# 특정 파일 타입에 대해 LF를 사용하도록 설정
-*.js text eol=lf
-*.json text eol=lf
-*.md text eol=lf
