@@ -8,7 +8,7 @@ taskController.createTask = async (req, res) => {
     const { userId } = req;
     const newTask = new Task({ task, isComplete, author: userId });
     await newTask.save();
-    res.status(201).json({ status: 'ok', data: newTask });
+    res.status(200).json({ status: 'ok', data: newTask });
   } catch (err) {
     res.status(400).json({ status: 'fail', error: err.message });
   }
@@ -17,7 +17,7 @@ taskController.createTask = async (req, res) => {
 taskController.getTask = async (req, res) => {
   try {
     const taskList = await Task.find({}).populate("author");
-    res.status(201).json({ status: "ok", data: taskList });
+    res.status(200).json({ status: "ok", data: taskList });
   } catch (err) {
     res.status(500).json({ status: "fail", error: err.message });
   }
@@ -31,7 +31,7 @@ taskController.updateTask = async (req, res) => {
     if (!updatedTask) {
       return res.status(404).json({ status: 'fail', error: 'Task not found' });
     }
-    res.status(201).json({ status: 'ok', data: updatedTask });
+    res.status(200).json({ status: 'ok', data: updatedTask });
   } catch (err) {
     res.status(400).json({ status: 'fail', error: err.message });
   }
@@ -44,7 +44,7 @@ taskController.deleteTask = async (req, res) => {
     if (!deletedTask) {
       return res.status(404).json({ status: 'fail', error: 'Task not found' });
     }
-    res.status(201).json({ status: 'ok', data: deletedTask });
+    res.status(200).json({ status: 'ok', data: deletedTask });
   } catch (err) {
     res.status(400).json({ status: 'fail', error: err.message });
   }
