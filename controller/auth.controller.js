@@ -1,7 +1,6 @@
 const authController = {};
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
 authController.authenticate = (req, res, next) => {
@@ -13,13 +12,13 @@ authController.authenticate = (req, res, next) => {
     const token = tokenString.replace("Bearer ", "");
     jwt.verify(token, JWT_SECRET_KEY, (error, payload) => {
       if (error) {
-        throw new Error("invalid token");
+        return res.status(401).json({ status: "fail", message: error.message });
       }
-      console.log("payload???", payload);
+      req.userId = payload._id
       next();
     });
   } catch (error) {
-    res.status(401).json({ status:"fail", message: error.message });
+    res.status(401).json({ status: "fail", message: error.message });
   }
 };
 
